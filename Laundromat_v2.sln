@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundromat_v2", "Laundromat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B79617E-3288-4AA8-86AA-44C9E8CB3879}"
 	ProjectSection(SolutionItems) = preProject
-		DBConn.cs = DBConn.cs
+		DBHandler.cs = DBHandler.cs
 	EndProjectSection
 EndProject
 Global
