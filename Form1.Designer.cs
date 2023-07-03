@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.AllProducts = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Delete = new System.Windows.Forms.Button();
             this.Update = new System.Windows.Forms.Button();
             this.Insert = new System.Windows.Forms.Button();
-            this.textBoxOut = new System.Windows.Forms.TextBox();
-            this.AllProducts = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,10 +57,23 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxOut);
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // AllProducts
+            // 
+            this.AllProducts.AutoSize = true;
+            this.AllProducts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AllProducts.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AllProducts.Location = new System.Drawing.Point(0, 338);
+            this.AllProducts.Name = "AllProducts";
+            this.AllProducts.Size = new System.Drawing.Size(265, 23);
+            this.AllProducts.TabIndex = 5;
+            this.AllProducts.Text = "Get All Products";
+            this.AllProducts.UseVisualStyleBackColor = true;
+            this.AllProducts.Click += new System.EventHandler(this.AllProducts_Click);
             // 
             // textBox1
             // 
@@ -111,29 +124,14 @@
             this.Insert.UseVisualStyleBackColor = true;
             this.Insert.Click += new System.EventHandler(this.Insert_Click);
             // 
-            // textBoxOut
+            // richTextBox1
             // 
-            this.textBoxOut.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxOut.Location = new System.Drawing.Point(0, 0);
-            this.textBoxOut.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxOut.Multiline = true;
-            this.textBoxOut.Name = "textBoxOut";
-            this.textBoxOut.ReadOnly = true;
-            this.textBoxOut.Size = new System.Drawing.Size(531, 38);
-            this.textBoxOut.TabIndex = 4;
-            // 
-            // AllProducts
-            // 
-            this.AllProducts.AutoSize = true;
-            this.AllProducts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.AllProducts.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AllProducts.Location = new System.Drawing.Point(0, 338);
-            this.AllProducts.Name = "AllProducts";
-            this.AllProducts.Size = new System.Drawing.Size(265, 23);
-            this.AllProducts.TabIndex = 5;
-            this.AllProducts.Text = "Get All Products";
-            this.AllProducts.UseVisualStyleBackColor = true;
-            this.AllProducts.Click += new System.EventHandler(this.AllProducts_Click);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(531, 450);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
@@ -146,7 +144,6 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -160,8 +157,8 @@
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBoxOut;
         private System.Windows.Forms.Button AllProducts;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

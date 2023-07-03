@@ -56,16 +56,17 @@ namespace Laundromat_v2
                     {
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
+                            object[] data = new object[3];
                             int row = 0;
                             while (reader.Read())
                             {
-                                textBoxOut.AppendText(reader.GetString(row) + " ");
-                                row++;
-                                if (row > 2)
+                                while (row < 2)
                                 {
-                                    row = 0;
-                                    textBoxOut.AppendText("\n");
+                                    richTextBox1.Text += reader.GetValue(row) + " ";
+                                    row++;
                                 }
+                                richTextBox1.Text += "\r\n";
+                                row = 0;
                             }
                         }
                     }
