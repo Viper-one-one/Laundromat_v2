@@ -34,6 +34,7 @@
             this.Update = new System.Windows.Forms.Button();
             this.Insert = new System.Windows.Forms.Button();
             this.textBoxOut = new System.Windows.Forms.TextBox();
+            this.AllProducts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -44,11 +45,11 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.AllProducts);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.Delete);
             this.splitContainer1.Panel1.Controls.Add(this.Update);
@@ -57,18 +58,16 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.textBoxOut);
-            this.splitContainer1.Size = new System.Drawing.Size(2133, 1073);
-            this.splitContainer1.SplitterDistance = 709;
-            this.splitContainer1.SplitterWidth = 11;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
+            this.splitContainer1.SplitterDistance = 265;
             this.splitContainer1.TabIndex = 0;
             // 
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(0, 909);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.textBox1.Location = new System.Drawing.Point(0, 361);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(709, 38);
+            this.textBox1.Size = new System.Drawing.Size(265, 20);
             this.textBox1.TabIndex = 1;
             // 
             // Delete
@@ -76,9 +75,10 @@
             this.Delete.AutoSize = true;
             this.Delete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Delete.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Delete.Location = new System.Drawing.Point(0, 947);
+            this.Delete.Location = new System.Drawing.Point(0, 381);
+            this.Delete.Margin = new System.Windows.Forms.Padding(1);
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(709, 42);
+            this.Delete.Size = new System.Drawing.Size(265, 23);
             this.Delete.TabIndex = 3;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = true;
@@ -89,9 +89,10 @@
             this.Update.AutoSize = true;
             this.Update.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Update.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Update.Location = new System.Drawing.Point(0, 989);
+            this.Update.Location = new System.Drawing.Point(0, 404);
+            this.Update.Margin = new System.Windows.Forms.Padding(1);
             this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(709, 42);
+            this.Update.Size = new System.Drawing.Size(265, 23);
             this.Update.TabIndex = 2;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = true;
@@ -102,10 +103,9 @@
             this.Insert.AutoSize = true;
             this.Insert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Insert.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Insert.Location = new System.Drawing.Point(0, 1031);
-            this.Insert.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Insert.Location = new System.Drawing.Point(0, 427);
             this.Insert.Name = "Insert";
-            this.Insert.Size = new System.Drawing.Size(709, 42);
+            this.Insert.Size = new System.Drawing.Size(265, 23);
             this.Insert.TabIndex = 0;
             this.Insert.Text = "Insert";
             this.Insert.UseVisualStyleBackColor = true;
@@ -115,18 +115,32 @@
             // 
             this.textBoxOut.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxOut.Location = new System.Drawing.Point(0, 0);
+            this.textBoxOut.Margin = new System.Windows.Forms.Padding(1);
+            this.textBoxOut.Multiline = true;
             this.textBoxOut.Name = "textBoxOut";
             this.textBoxOut.ReadOnly = true;
-            this.textBoxOut.Size = new System.Drawing.Size(1413, 38);
+            this.textBoxOut.Size = new System.Drawing.Size(531, 38);
             this.textBoxOut.TabIndex = 4;
+            // 
+            // AllProducts
+            // 
+            this.AllProducts.AutoSize = true;
+            this.AllProducts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AllProducts.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AllProducts.Location = new System.Drawing.Point(0, 338);
+            this.AllProducts.Name = "AllProducts";
+            this.AllProducts.Size = new System.Drawing.Size(265, 23);
+            this.AllProducts.TabIndex = 5;
+            this.AllProducts.Text = "Get All Products";
+            this.AllProducts.UseVisualStyleBackColor = true;
+            this.AllProducts.Click += new System.EventHandler(this.AllProducts_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2133, 1073);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -147,6 +161,7 @@
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBoxOut;
+        private System.Windows.Forms.Button AllProducts;
     }
 }
 

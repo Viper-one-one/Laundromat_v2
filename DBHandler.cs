@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -8,27 +9,39 @@ namespace Laundromat_v2 {
 	    public DBHandler()
 	    {
 	    }
-        public void useDB()
+        public MySqlDataReader UseDB(object sender, int typeOfCmd)
         {
+            
             var dbCon = DBConnection.Instance();
-            dbCon.Server = "test_server";
-            dbCon.DatabaseName = "test";
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "homework";
             dbCon.UserName = "root";
             dbCon.Password = "1234";
+            
             if (dbCon.IsConnect())
             {
-                //suppose col0 and col1 are defined as VARCHAR in the DB
-                string query = "SELECT * FROM tab1";
-                var cmd = new MySqlCommand(query, dbCon.Connection);
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
+                switch (typeOfCmd)
                 {
-                    string someStringFromColumnZero = reader.GetString(0);
-                    string someStringFromColumnOne = reader.GetString(1);
-                    Console.WriteLine(someStringFromColumnZero + "," + someStringFromColumnOne);
+                    case 1:
+                        string query = "Select * From product";
+                        var cmd = new MySqlCommand(query, dbCon.Connection);
+                        var reader = cmd.ExecuteReader();
+                        
+                        return reader;
+                    case 2:
+                        string query2 = "Select * From pc";
+                        var cmd2 = new MySqlCommand(query2, dbCon.Connection);
+                        var reader2 = cmd2.ExecuteReader();
+                        
+                        return (reader2);
+                    default:
+                        dbCon.Close();
+                        throw new Exception("error in cmd switch");
                 }
-                dbCon.Close();
             }
+            dbCon.Close();
+            throw new Exception("error in cmd switch");
+            
         }
     }
 }
