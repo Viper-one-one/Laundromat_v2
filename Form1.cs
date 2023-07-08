@@ -15,9 +15,7 @@ namespace Laundromat_v2
 {
     public partial class Form1 : Form
     {
-        DBHandler handler = new DBHandler();
         DBConnection dbCon = DBConnection.Instance();
-        
         
         public Form1()
         {
@@ -32,43 +30,20 @@ namespace Laundromat_v2
 
         private void Insert_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Inserted");
-
-        }
-
-        private void Delete_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Deleted");
-        }
-
-        private void AllProducts_Click(object sender, EventArgs e)
-        {
             dbCon = DBConnection.Instance();
             dbCon.Server = "localhost";
-            dbCon.DatabaseName = "homework";
+            dbCon.DatabaseName = "laundromat";
             dbCon.UserName = "root";
             dbCon.Password = "1234";
+            string table = ((DataTable)dataGridView.DataSource).TableName;
+            string col1 = dataGridView.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Name;
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM PRODUCT", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand($"Insert Into {table}", dbCon.Connection))
                 {
                     try
                     {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            object[] data = new object[3];
-                            int row = 0;
-                            while (reader.Read())
-                            {
-                                while (row < 2)
-                                {
-                                    richTextBox1.Text += reader.GetValue(row) + " ";
-                                    row++;
-                                }
-                                richTextBox1.Text += "\r\n";
-                                row = 0;
-                            }
-                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -77,6 +52,172 @@ namespace Laundromat_v2
                     finally { dbCon.Close(); }
                 }
             }
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            string table = ((DataTable)dataGridView.DataSource).TableName;
+            string col1 = dataGridView.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Name;
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"Drop {table}", dbCon.Connection))
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void OutLocation_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "Laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM location", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void OutCustomers_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "Laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM customer", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void OutEmployees_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "Laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM employee", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void OutMachine_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "Laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM machine", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void OutSuppliers_Click(object sender, EventArgs e)
+        {
+            dbCon = DBConnection.Instance();
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "Laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM supplier", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //update tuple
         }
     }
 }
