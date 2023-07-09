@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Laundromat_v2
     public partial class Form1 : Form
     {
         DBConnection dbCon = DBConnection.Instance();
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -25,68 +26,63 @@ namespace Laundromat_v2
 
         private void Update_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Update");
-        }
-
-        private void Insert_Click(object sender, EventArgs e)
-        {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
-            string table = ((DataTable)dataGridView.DataSource).TableName;
-            string col1 = dataGridView.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Name;
+            string update = "UPDATE customer SET customer_id=" + CustID.Text + ", f_name=\"" + cust_f_name.Text + "\", l_name=\"" + cust_l_name.Text + "\", bdate=\'" + cust_b_date.Value.Date.ToString("yyyy-MM-dd") + "\', VIP=" + vip.Text + " WHERE customer_id=" + CustID.Text + ";";
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"Insert Into {table}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
                 {
                     try
                     {
-                        
+                        cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
+                }
+            }
+        }
+
+        private void Insert_Click(object sender, EventArgs e)
+        {
+            string insert = "INSERT INTO customer VALUES (" + CustID.Text + ", \"" + cust_f_name.Text + "\", \"" + cust_l_name.Text + "\", \'" + cust_b_date.Value.ToString("yyyy-MM-dd") + "\', " + vip.Text.ToString() + ");";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
-            string table = ((DataTable)dataGridView.DataSource).TableName;
-            string col1 = dataGridView.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Name;
+            string delete = "DELETE FROM customer Where customer_id=" + CustID.Text;
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"Drop {table}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
                 {
                     try
                     {
-
+                        cmd.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
         private void OutLocation_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "Laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM location", dbCon.Connection))
@@ -102,18 +98,12 @@ namespace Laundromat_v2
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
         private void OutCustomers_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "Laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM customer", dbCon.Connection))
@@ -129,18 +119,12 @@ namespace Laundromat_v2
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
         private void OutEmployees_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "Laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM employee", dbCon.Connection))
@@ -156,18 +140,12 @@ namespace Laundromat_v2
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
         private void OutMachine_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "Laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM machine", dbCon.Connection))
@@ -183,18 +161,12 @@ namespace Laundromat_v2
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
         private void OutSuppliers_Click(object sender, EventArgs e)
         {
-            dbCon = DBConnection.Instance();
-            dbCon.Server = "localhost";
-            dbCon.DatabaseName = "Laundromat";
-            dbCon.UserName = "root";
-            dbCon.Password = "1234";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM supplier", dbCon.Connection))
@@ -210,14 +182,134 @@ namespace Laundromat_v2
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { dbCon.Close(); }
                 }
             }
         }
 
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void CustControl_Click(object sender, EventArgs e)
         {
-            //update tuple
+            if (CustomerControlGroup.Visible == false)
+            {
+                CustomerControlGroup.Visible = true;
+            }
+            else
+            {
+                CustomerControlGroup.Visible = false;
+            }
+        }
+
+        private void LocationControl_Click(object sender, EventArgs e)
+        {
+            if (LocationControlGroup.Visible == false)
+            {
+                LocationControlGroup.Visible = true;
+            }
+            else
+            {
+                LocationControlGroup.Visible = false;
+            }
+        }
+
+        private void SupplierControls_Click(object sender, EventArgs e)
+        {
+            if (SupplierControlGroup.Visible == false)
+            {
+                SupplierControlGroup.Visible = true;
+            }
+            else
+            {
+                SupplierControlGroup.Visible = false;
+            }
+        }
+
+        private void MachineControls_Click(object sender, EventArgs e)
+        {
+            if (MachineControlGroup.Visible == false)
+            {
+                MachineControlGroup.Visible = true;
+            }
+            else
+            {
+                MachineControlGroup.Visible = false;
+            }
+        }
+
+        private void EmployeeControls_Click(object sender, EventArgs e)
+        {
+            if (EmployeeControlGroup.Visible == false)
+            {
+                EmployeeControlGroup.Visible = true;
+            }
+            else
+            {
+                EmployeeControlGroup.Visible = false;
+            }
+        }
+
+        private void SetConStr_Click(object sender, EventArgs e)
+        {
+            dbCon.Server = "localhost";
+            dbCon.DatabaseName = "laundromat";
+            dbCon.UserName = "root";
+            dbCon.Password = "1234";
+        }
+
+        private void UpdateLocation_Click(object sender, EventArgs e)
+        {
+            string update = "UPDATE customer SET location_num=" + loc_num.Text + ", street_no=" + street_num.Text + ", street_name=\"" + street_name.Text + "\", city=\"" + city.Text + "\", state=\"" 
+                + state.Text + "\", zip=" + zip_num.Text + " WHERE location_num=" + loc_num + ";";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void InsertLocation_Click(object sender, EventArgs e)
+        {
+            string insert = "INSERT INTO customer VALUES (" + loc_num + ", " + street_num + ", \"" + street_name.Text + "\", \"" + city.Text + "\", \"" + state.Text + "\", " + zip_num.Text + ");";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void DeleteLocation_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM customer Where location_num=" + loc_num.Text;
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
         }
     }
 }
