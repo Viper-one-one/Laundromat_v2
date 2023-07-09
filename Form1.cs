@@ -256,8 +256,8 @@ namespace Laundromat_v2
 
         private void UpdateLocation_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE customer SET location_num=" + loc_num.Text + ", street_no=" + street_num.Text + ", street_name=\"" + street_name.Text + "\", city=\"" + city.Text + "\", state=\"" 
-                + state.Text + "\", zip=" + zip_num.Text + " WHERE location_num=" + loc_num + ";";
+            string update = "UPDATE location SET location_num=" + loc_num.Text + ", street_no=" + street_num.Text + ", street_name=\"" + street_name.Text + "\", city=\"" + city.Text + "\", state=\"" 
+                + state.Text + "\", zip=" + zip_num.Text + " WHERE location_num=" + loc_num.Text + ";";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
@@ -276,7 +276,7 @@ namespace Laundromat_v2
 
         private void InsertLocation_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO customer VALUES (" + loc_num + ", " + street_num + ", \"" + street_name.Text + "\", \"" + city.Text + "\", \"" + state.Text + "\", " + zip_num.Text + ");";
+            string insert = "INSERT INTO location VALUES (" + loc_num.Text + ", " + street_num.Text + ", \"" + street_name.Text + "\", \"" + city.Text + "\", \"" + state.Text + "\", " + zip_num.Text + ");";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
@@ -295,7 +295,180 @@ namespace Laundromat_v2
 
         private void DeleteLocation_Click(object sender, EventArgs e)
         {
-            string delete = "DELETE FROM customer Where location_num=" + loc_num.Text;
+            string delete = "DELETE FROM location Where location_num=" + loc_num.Text;
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void UpdateSupplier_Click(object sender, EventArgs e)
+        {
+            string update = "UPDATE supplier SET supplier_id=" + supp_id.Text + ", supplier_name=\"" + supp_name.Text + "\" WHERE supplier_id=" + supp_id.Text + ";";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void InsertSupplier_Click(object sender, EventArgs e)
+        {
+            string insert = "INSERT INTO supplier VALUES (" + supp_id.Text + ", \"" + supp_name.Text + "\");";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void DeleteSupplier_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM supplier Where supplier_id=" + supp_id.Text;
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void UpdateMachine_Click(object sender, EventArgs e)
+        {
+            string update = "UPDATE machine SET machine_id=" + mach_id.Text + ", available=" + available_1_0.Text + ", num_uses=" + num_uses.Text + ", balance=" + balance.Text + ", capacity=" + capacity_liter.Text + ", type=\"" + type_mach.Text + "\" WHERE machine_id=" + mach_id.Text + ";";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void InsertMachine_Click(object sender, EventArgs e)
+        {
+            string insert = "INSERT INTO machine VALUES (" + mach_id.Text + ", " + available_1_0.Text + ", " + num_uses.Text + ", " + balance.Text + ", " + capacity_liter.Text + ", \"" + type_mach + "\");";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void DeleteMachine_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM machine Where machine_id=" + mach_id.Text;
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void UpdateEmployee_Click(object sender, EventArgs e)
+        {
+            string update = "UPDATE employee SET employee_id=" + emp_id.Text + ", ssn=" + ssn.Text + ", f_name=\"" + emp_f_name + ", l_name=\"" + emp_l_name + ", dob=\'" +
+                emp_b_day.Value.Date.ToString("yyyy-MM-dd") + "\', salary=" + salary.Text + ", " + days_off.Text + ", " + man_id.Text + " WHERE employee_id=" + emp_id.Text + ";";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void InsertEmployee_Click(object sender, EventArgs e)
+        {
+            string insert = "INSERT INTO employee VALUES (" + emp_id.Text + ", " + ssn.Text + ", \"" + emp_f_name.Text + "\", " + ", \"" + emp_l_name.Text + "\", " + emp_b_day.Value.Date.ToString("yyyy-MM-dd") 
+                + ", " + salary.Text + ", " + days_off.Text + ",  " + man_id.Text + ");";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void DeleteEmployee_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM employee Where employee_id=" + emp_id.Text;
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))

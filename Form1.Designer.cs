@@ -92,6 +92,7 @@
             this.CustControl = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.SetConStr = new System.Windows.Forms.Button();
+            this.salary = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             this.emp_crud.AutoSize = true;
             this.emp_crud.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.emp_crud.Controls.Add(this.salary);
             this.emp_crud.Controls.Add(this.man_id);
             this.emp_crud.Controls.Add(this.days_off);
             this.emp_crud.Controls.Add(this.emp_b_day);
@@ -243,6 +245,7 @@
             this.DeleteEmployee.TabIndex = 10;
             this.DeleteEmployee.Text = "Delete Employee";
             this.DeleteEmployee.UseVisualStyleBackColor = true;
+            this.DeleteEmployee.Click += new System.EventHandler(this.DeleteEmployee_Click);
             // 
             // InsertEmployee
             // 
@@ -255,6 +258,7 @@
             this.InsertEmployee.TabIndex = 9;
             this.InsertEmployee.Text = "Insert Employee";
             this.InsertEmployee.UseVisualStyleBackColor = true;
+            this.InsertEmployee.Click += new System.EventHandler(this.InsertEmployee_Click);
             // 
             // UpdateEmployee
             // 
@@ -267,6 +271,7 @@
             this.UpdateEmployee.TabIndex = 8;
             this.UpdateEmployee.Text = "Update Employee";
             this.UpdateEmployee.UseVisualStyleBackColor = true;
+            this.UpdateEmployee.Click += new System.EventHandler(this.UpdateEmployee_Click);
             // 
             // OutEmployees
             // 
@@ -392,6 +397,7 @@
             this.DeleteMachine.TabIndex = 11;
             this.DeleteMachine.Text = "Delete Machine";
             this.DeleteMachine.UseVisualStyleBackColor = true;
+            this.DeleteMachine.Click += new System.EventHandler(this.DeleteMachine_Click);
             // 
             // InsertMachine
             // 
@@ -404,6 +410,7 @@
             this.InsertMachine.TabIndex = 10;
             this.InsertMachine.Text = "Insert Machine";
             this.InsertMachine.UseVisualStyleBackColor = true;
+            this.InsertMachine.Click += new System.EventHandler(this.InsertMachine_Click);
             // 
             // UpdateMachine
             // 
@@ -416,6 +423,7 @@
             this.UpdateMachine.TabIndex = 9;
             this.UpdateMachine.Text = "Update Machine";
             this.UpdateMachine.UseVisualStyleBackColor = true;
+            this.UpdateMachine.Click += new System.EventHandler(this.UpdateMachine_Click);
             // 
             // OutMachine
             // 
@@ -505,6 +513,7 @@
             this.DeleteSupplier.TabIndex = 18;
             this.DeleteSupplier.Text = "Delete Supplier";
             this.DeleteSupplier.UseVisualStyleBackColor = true;
+            this.DeleteSupplier.Click += new System.EventHandler(this.DeleteSupplier_Click);
             // 
             // InsertSupplier
             // 
@@ -517,6 +526,7 @@
             this.InsertSupplier.TabIndex = 17;
             this.InsertSupplier.Text = "Insert Supplier";
             this.InsertSupplier.UseVisualStyleBackColor = true;
+            this.InsertSupplier.Click += new System.EventHandler(this.InsertSupplier_Click);
             // 
             // UpdateSupplier
             // 
@@ -529,6 +539,7 @@
             this.UpdateSupplier.TabIndex = 16;
             this.UpdateSupplier.Text = "Update Supplier";
             this.UpdateSupplier.UseVisualStyleBackColor = true;
+            this.UpdateSupplier.Click += new System.EventHandler(this.UpdateSupplier_Click);
             // 
             // OutSuppliers
             // 
@@ -882,6 +893,14 @@
             this.SetConStr.UseVisualStyleBackColor = true;
             this.SetConStr.Click += new System.EventHandler(this.SetConStr_Click);
             // 
+            // salary
+            // 
+            this.salary.Dock = System.Windows.Forms.DockStyle.Left;
+            this.salary.Location = new System.Drawing.Point(477, 16);
+            this.salary.Name = "salary";
+            this.salary.Size = new System.Drawing.Size(100, 20);
+            this.salary.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -986,6 +1005,7 @@
         private System.Windows.Forms.TextBox emp_l_name;
         private System.Windows.Forms.TextBox man_id;
         private System.Windows.Forms.Button SetConStr;
+        private System.Windows.Forms.TextBox salary;
     }
 }
 
