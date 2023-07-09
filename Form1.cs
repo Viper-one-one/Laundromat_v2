@@ -390,7 +390,7 @@ namespace Laundromat_v2
 
         private void InsertMachine_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO machine VALUES (" + mach_id.Text + ", " + available_1_0.Text + ", " + num_uses.Text + ", " + balance.Text + ", " + capacity_liter.Text + ", \"" + type_mach + "\");";
+            string insert = "INSERT INTO machine VALUES (" + mach_id.Text + ", " + available_1_0.Text + ", " + num_uses.Text + ", " + balance.Text + ", " + capacity_liter.Text + ", \"" + type_mach.Text + "\");";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
@@ -428,8 +428,8 @@ namespace Laundromat_v2
 
         private void UpdateEmployee_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE employee SET employee_id=" + emp_id.Text + ", ssn=" + ssn.Text + ", f_name=\"" + emp_f_name + ", l_name=\"" + emp_l_name + ", dob=\'" +
-                emp_b_day.Value.Date.ToString("yyyy-MM-dd") + "\', salary=" + salary.Text + ", " + days_off.Text + ", " + man_id.Text + " WHERE employee_id=" + emp_id.Text + ";";
+            string update = "UPDATE employee SET employee_id=" + emp_id.Text + ", ssn=" + ssn.Text + ", f_name=\"" + emp_f_name.Text + "\", l_name=\"" + emp_l_name.Text + "\", dob=\'" +
+                emp_b_day.Value.Date.ToString("yyyy-MM-dd") + "\', salary=" + salary.Text + ", days_off=" + days_off.Text + ", manager_id=" + man_id.Text + " WHERE employee_id=" + emp_id.Text + ";";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
@@ -448,8 +448,8 @@ namespace Laundromat_v2
 
         private void InsertEmployee_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO employee VALUES (" + emp_id.Text + ", " + ssn.Text + ", \"" + emp_f_name.Text + "\", " + ", \"" + emp_l_name.Text + "\", " + emp_b_day.Value.Date.ToString("yyyy-MM-dd") 
-                + ", " + salary.Text + ", " + days_off.Text + ",  " + man_id.Text + ");";
+            string insert = "INSERT INTO employee VALUES (" + emp_id.Text + ", " + ssn.Text + ", \"" + emp_f_name.Text + "\", \"" + emp_l_name.Text + "\", \'" + emp_b_day.Value.Date.ToString("yyyy-MM-dd") 
+                + "\', " + salary.Text + ", " + days_off.Text + ",  " + man_id.Text + ");";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
