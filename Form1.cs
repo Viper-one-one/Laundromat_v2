@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,8 @@ namespace Laundromat_v2
 
         private void Update_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE customer SET customer_id=" + CustID.Text + ", f_name=\"" + cust_f_name.Text + "\", l_name=\"" + cust_l_name.Text + "\", bdate=\'" + cust_b_date.Value.Date.ToString("yyyy-MM-dd") + "\', VIP=" + vip.Text + " WHERE customer_id=" + CustID.Text + ";";
+            string update = "UPDATE customer SET customer_id=" + CustID.Text + ", f_name=\"" + cust_f_name.Text + "\", l_name=\"" + cust_l_name.Text + "\", bdate=\'"
+                + cust_b_date.Value.Date.ToString("yyyy-MM-dd") + "\', VIP=" + vip.Text + " WHERE customer_id=" + CustID.Text + ";";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
@@ -45,7 +47,8 @@ namespace Laundromat_v2
 
         private void Insert_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO customer VALUES (" + CustID.Text + ", \"" + cust_f_name.Text + "\", \"" + cust_l_name.Text + "\", \'" + cust_b_date.Value.ToString("yyyy-MM-dd") + "\', " + vip.Text.ToString() + ");";
+            string insert = "INSERT INTO customer VALUES (" + CustID.Text + ", \"" + cust_f_name.Text + "\", \"" + cust_l_name.Text + "\", \'" + cust_b_date.Value.ToString("yyyy-MM-dd") + "\', " 
+                + vip.Text.ToString() + ");";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
@@ -256,19 +259,22 @@ namespace Laundromat_v2
 
         private void UpdateLocation_Click(object sender, EventArgs e)
         {
-            string update = "UPDATE location SET location_num=" + loc_num.Text + ", street_no=" + street_num.Text + ", street_name=\"" + street_name.Text + "\", city=\"" + city.Text + "\", state=\"" 
-                + state.Text + "\", zip=" + zip_num.Text + " WHERE location_num=" + loc_num.Text + ";";
-            if (dbCon.IsConnect())
+            if (Int32.Parse(street_num.Text) < 100_000 && Int32.Parse(street_num.Text) > 0)
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
+                string update = "UPDATE location SET location_num=" + loc_num.Text + ", street_no=" + street_num.Text + ", street_name=\"" + street_name.Text + "\", city=\"" + city.Text + "\", state=\""
+                    + state.Text + "\", zip=" + zip_num.Text + " WHERE location_num=" + loc_num.Text + ";";
+                if (dbCon.IsConnect())
                 {
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
                     {
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
             }
@@ -276,20 +282,27 @@ namespace Laundromat_v2
 
         private void InsertLocation_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO location VALUES (" + loc_num.Text + ", " + street_num.Text + ", \"" + street_name.Text + "\", \"" + city.Text + "\", \"" + state.Text + "\", " + zip_num.Text + ");";
-            if (dbCon.IsConnect())
+            if (Int32.Parse(street_num.Text) < 100_000 && Int32.Parse(street_num.Text) > 0)
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                string insert = "INSERT INTO location VALUES (" + loc_num.Text + ", " + street_num.Text + ", \"" + street_name.Text + "\", \"" + city.Text + "\", \"" + state.Text + "\", " + zip_num.Text + ");";
+                if (dbCon.IsConnect())
                 {
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
                     {
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("street number cannot exceed 100,000");
             }
         }
 
@@ -448,11 +461,37 @@ namespace Laundromat_v2
 
         private void InsertEmployee_Click(object sender, EventArgs e)
         {
-            string insert = "INSERT INTO employee VALUES (" + emp_id.Text + ", " + ssn.Text + ", \"" + emp_f_name.Text + "\", \"" + emp_l_name.Text + "\", \'" + emp_b_day.Value.Date.ToString("yyyy-MM-dd") 
-                + "\', " + salary.Text + ", " + days_off.Text + ",  " + man_id.Text + ");";
+            if (Int32.Parse(salary.Text) <= 52000)
+            {
+                string insert = "INSERT INTO employee VALUES (" + emp_id.Text + ", " + ssn.Text + ", \"" + emp_f_name.Text + "\", \"" + emp_l_name.Text + "\", \'" + emp_b_day.Value.Date.ToString("yyyy-MM-dd")
+                    + "\', " + salary.Text + ", " + days_off.Text + ",  " + man_id.Text + ");";
+                if (dbCon.IsConnect())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                    {
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("salary must be under $25");
+            }
+        }
+
+        private void DeleteEmployee_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM employee Where employee_id=" + emp_id.Text +";";
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{insert}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
                 {
                     try
                     {
@@ -466,16 +505,315 @@ namespace Laundromat_v2
             }
         }
 
-        private void DeleteEmployee_Click(object sender, EventArgs e)
+        private void MachCustUse_Click(object sender, EventArgs e)
         {
-            string delete = "DELETE FROM employee Where employee_id=" + emp_id.Text;
+            if (CustMachLookupControlGroup.Visible == false)
+            {
+                CustMachLookupControlGroup.Visible = true;
+            }
+            else
+            {
+                CustMachLookupControlGroup.Visible = false;
+            }
+        }
+
+        private void OutMachCustLookup_Click(object sender, EventArgs e)
+        {
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{delete}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM machine_customer_use", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void PaymentControl_Click(object sender, EventArgs e)
+        {
+            if (PaymentControlGroup.Visible == false)
+            {
+                PaymentControlGroup.Visible = true;
+            }
+            else
+            {
+                PaymentControlGroup.Visible = false;
+            }
+        }
+
+        private void OutPayment_Click(object sender, EventArgs e)
+        {
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM payment", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void RepairControl_Click(object sender, EventArgs e)
+        {
+            if (RepairControlGroup.Visible == false)
+            {
+                RepairControlGroup.Visible = true;
+            }
+            else
+            {
+                RepairControlGroup.Visible = false;
+            }
+        }
+
+        private void OutRepair_Click(object sender, EventArgs e)
+        {
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM repair", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query7_CustSelectMachine_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT INTO machine_customer_use (m_id, c_id, date_used) SELECT m.machine_id, c.customer_id, CURDATE() FROM machine AS m " +
+                 "JOIN customer AS c ON c.pref_loc = m.mach_loc AND m.available = true ORDER BY RAND() LIMIT 1;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
                 {
                     try
                     {
                         cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query8_GetCustBalance_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT customer_id, balance FROM customer ORDER BY RAND() LIMIT 1;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query9_EmployeeDayOff_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT employee_id, days_off FROM employee ORDER BY RAND() LIMIT 1;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query10_PayMach_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT m.machine_id, (m.balance - p.amount) AS profit FROM machine AS m JOIN payment AS p ON m.machine_id = p.machine_id ORDER BY RAND() LIMIT 1;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query11_ShowAvailMach_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT mcu.m_id, mcu.c_id FROM machine_customer_use AS mcu WHERE mcu.m_id = 001;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query12_ShowAvailMach_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT DISTINCT m.mach_loc, m.machine_id, m.num_uses FROM machine AS m JOIN location AS l ON m.mach_loc = l.location_num WHERE m.num_uses >=500;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query13_CustPayMach_Click(object sender, EventArgs e)
+        {
+            
+            string query = "SELECT p.machine_id, p.supplier_id FROM payment AS p JOIN repair AS r ON p.supplier_id = r.supp_id WHERE p.supplier_id = (SELECT supplier_id FROM supplier ORDER BY RAND() LIMIT 1);";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query15_BuyMach_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT p.manager_id, p.supplier_id, SUM(p.amount) AS total_amount_paid FROM payment AS p GROUP BY p.manager_id, p.supplier_id HAVING COUNT(*) >= 10;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query16_TotPayPer_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT SUM(m.balance) AS total_balance FROM payment AS p JOIN machine as m ON p.machine_id = m.machine_id GROUP BY p.manager_id, p.supplier_id HAVING COUNT(*) >= 10;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Query17_FindProfit_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT SUM(m.balance) AS total_balance, SUM(p.amount) AS total_amount_paid, (SUM(m.balance) - SUM(p.amount)) AS profit_margin FROM payment AS p JOIN machine as m ON p.machine_id = m.machine_id GROUP BY p.manager_id, p.supplier_id HAVING COUNT(*) >= 10;";
+            if (dbCon.IsConnect())
+            {
+                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        dataGridView.DataSource = dt;
                     }
                     catch (Exception ex)
                     {
