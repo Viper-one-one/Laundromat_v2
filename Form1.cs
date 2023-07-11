@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Crypto.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -606,15 +607,23 @@ namespace Laundromat_v2
 
         private void Query7_CustSelectMachine_Click(object sender, EventArgs e)
         {
+            string desiredMach = MachID_Input.Text;
+            string desiredCust = CustID_ForSelectMach.Text;
             string query = "INSERT INTO machine_customer_use (m_id, c_id, date_used) SELECT m.machine_id, c.customer_id, CURDATE() FROM machine AS m " +
-                 "JOIN customer AS c ON c.pref_loc = m.mach_loc AND m.available = true ORDER BY RAND() LIMIT 1;";
+                 $"JOIN customer AS c ON c.pref_loc = m.mach_loc AND m.available = true WHERE m.machine_id={desiredMach} AND c.customer_id={desiredCust};";
+            string update = $"UPDATE machine SET available = false WHERE machine_id = {desiredMach};";
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand(query, dbCon.Connection))
                 {
                     try
                     {
                         cmd.ExecuteNonQuery();
+                        using (MySqlCommand cmd2 = new MySqlCommand(update, dbCon.Connection))
+                        {
+                            cmd2.ExecuteNonQuery();
+                        }
+                        OutMachCustLookup_Click(sender, e);
                     }
                     catch (Exception ex)
                     {
@@ -626,7 +635,8 @@ namespace Laundromat_v2
 
         private void Query8_GetCustBalance_Click(object sender, EventArgs e)
         {
-            string query = "SELECT customer_id, balance FROM customer ORDER BY RAND() LIMIT 1;";
+            string desiredCust = CustIDInput.Text;
+            string query = $"SELECT customer_id, balance FROM customer WHERE customer_id={desiredCust};";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
@@ -648,13 +658,19 @@ namespace Laundromat_v2
 
         private void Query9_EmployeeDayOff_Click(object sender, EventArgs e)
         {
-            string query = "SELECT employee_id, days_off FROM employee ORDER BY RAND() LIMIT 1;";
+            string emp = EmpID_ForDayOff.Text;
+            string query = $"SELECT employee_id, days_off FROM employee WHERE employee_id={emp};";
+            string update = $"UPDATE employee SET days_off = days_off+1 WHERE employee_id = {emp};";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
                 {
                     try
                     {
+                        using (MySqlCommand cmd2 = new MySqlCommand(update, dbCon.Connection))
+                        {
+                            cmd2.ExecuteNonQuery();
+                        }
                         DataTable dt = new DataTable();
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -670,7 +686,8 @@ namespace Laundromat_v2
 
         private void Query10_PayMach_Click(object sender, EventArgs e)
         {
-            string query = "SELECT m.machine_id, (m.balance - p.amount) AS profit FROM machine AS m JOIN payment AS p ON m.machine_id = p.machine_id ORDER BY RAND() LIMIT 1;";
+            string date = emp_b_day.Value.ToString("yyyy-MM-dd");
+            string query = $"SELECT m.machine_id, (m.balance - p.amount) AS profit FROM machine AS m JOIN payment AS p ON m.machine_id = p.machine_id WHERE p.date_bought >=\'{date}\';";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
@@ -692,7 +709,8 @@ namespace Laundromat_v2
 
         private void Query11_ShowAvailMach_Click(object sender, EventArgs e)
         {
-            string query = "SELECT mcu.m_id, mcu.c_id FROM machine_customer_use AS mcu WHERE mcu.m_id = 001;";
+            string machID = mach_id.Text;
+            string query = $"SELECT mcu.m_id, mcu.c_id FROM machine_customer_use AS mcu WHERE mcu.m_id={machID};";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
@@ -714,10 +732,10 @@ namespace Laundromat_v2
 
         private void Query12_ShowAvailMach_Click(object sender, EventArgs e)
         {
-            string query = "SELECT DISTINCT m.mach_loc, m.machine_id, m.num_uses FROM machine AS m JOIN location AS l ON m.mach_loc = l.location_num WHERE m.num_uses >=500;";
+            string update = "SELECT DISTINCT m.mach_loc, m.machine_id, m.num_uses FROM machine AS m JOIN location AS l ON m.mach_loc = l.location_num WHERE m.num_uses >=500;";
             if (dbCon.IsConnect())
             {
-                using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
+                using (MySqlCommand cmd = new MySqlCommand($"{update}", dbCon.Connection))
                 {
                     try
                     {
@@ -736,8 +754,8 @@ namespace Laundromat_v2
 
         private void Query13_CustPayMach_Click(object sender, EventArgs e)
         {
-            
-            string query = "SELECT p.machine_id, p.supplier_id FROM payment AS p JOIN repair AS r ON p.supplier_id = r.supp_id WHERE p.supplier_id = (SELECT supplier_id FROM supplier ORDER BY RAND() LIMIT 1);";
+            string mach = supp_id.Text;
+            string query = $"SELECT p.machine_id, p.supplier_id FROM payment AS p JOIN repair AS r ON p.supplier_id = r.supp_id WHERE p.supplier_id = (SELECT supplier_id FROM supplier WHERE supplier_id={mach});";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))
@@ -803,7 +821,8 @@ namespace Laundromat_v2
 
         private void Query17_FindProfit_Click(object sender, EventArgs e)
         {
-            string query = "SELECT SUM(m.balance) AS total_balance, SUM(p.amount) AS total_amount_paid, (SUM(m.balance) - SUM(p.amount)) AS profit_margin FROM payment AS p JOIN machine as m ON p.machine_id = m.machine_id GROUP BY p.manager_id, p.supplier_id HAVING COUNT(*) >= 10;";
+            string query = "SELECT SUM(m.balance) AS total_balance, SUM(p.amount) AS total_amount_paid, (SUM(m.balance) - SUM(p.amount)) AS profit_margin " +
+                "FROM payment AS p JOIN machine as m ON p.machine_id = m.machine_id GROUP BY p.manager_id, p.supplier_id HAVING COUNT(*) >= 10";
             if (dbCon.IsConnect())
             {
                 using (MySqlCommand cmd = new MySqlCommand($"{query}", dbCon.Connection))

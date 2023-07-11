@@ -29,8 +29,23 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.RepairControlGroup = new System.Windows.Forms.GroupBox();
+            this.OutRepair = new System.Windows.Forms.Button();
+            this.RepairControl = new System.Windows.Forms.Button();
+            this.PaymentControlGroup = new System.Windows.Forms.GroupBox();
+            this.Query16_TotPayPer = new System.Windows.Forms.Button();
+            this.Query10_PayMach = new System.Windows.Forms.Button();
+            this.OutPayment = new System.Windows.Forms.Button();
+            this.PaymentControl = new System.Windows.Forms.Button();
+            this.CustMachLookupControlGroup = new System.Windows.Forms.GroupBox();
+            this.OutMachCustLookup = new System.Windows.Forms.Button();
+            this.MachCustUse = new System.Windows.Forms.Button();
             this.SetConStr = new System.Windows.Forms.Button();
             this.EmployeeControlGroup = new System.Windows.Forms.GroupBox();
+            this.Query17_FindProfit = new System.Windows.Forms.Button();
+            this.Query15_BuyMach = new System.Windows.Forms.Button();
+            this.Query9_EmployeeDayOff = new System.Windows.Forms.Button();
+            this.Query8_GetCustBalance = new System.Windows.Forms.Button();
             this.emp_crud = new System.Windows.Forms.GroupBox();
             this.salary = new System.Windows.Forms.TextBox();
             this.man_id = new System.Windows.Forms.TextBox();
@@ -46,6 +61,8 @@
             this.OutEmployees = new System.Windows.Forms.Button();
             this.EmployeeControls = new System.Windows.Forms.Button();
             this.MachineControlGroup = new System.Windows.Forms.GroupBox();
+            this.Query12_SetAvailMach = new System.Windows.Forms.Button();
+            this.Query11_ShowAvailMach = new System.Windows.Forms.Button();
             this.mach_crud = new System.Windows.Forms.GroupBox();
             this.type_mach = new System.Windows.Forms.TextBox();
             this.capacity_liter = new System.Windows.Forms.TextBox();
@@ -81,6 +98,8 @@
             this.OutputLocation = new System.Windows.Forms.Button();
             this.LocationControl = new System.Windows.Forms.Button();
             this.CustomerControlGroup = new System.Windows.Forms.GroupBox();
+            this.Query13_CustPayMach = new System.Windows.Forms.Button();
+            this.Query7_CustSelectMachine = new System.Windows.Forms.Button();
             this.OutCustomers = new System.Windows.Forms.Button();
             this.UpdateCust = new System.Windows.Forms.Button();
             this.InsertCust = new System.Windows.Forms.Button();
@@ -93,29 +112,22 @@
             this.CustID = new System.Windows.Forms.TextBox();
             this.CustControl = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.MachCustUse = new System.Windows.Forms.Button();
-            this.CustMachLookupControlGroup = new System.Windows.Forms.GroupBox();
-            this.OutMachCustLookup = new System.Windows.Forms.Button();
-            this.PaymentControl = new System.Windows.Forms.Button();
-            this.PaymentControlGroup = new System.Windows.Forms.GroupBox();
-            this.OutPayment = new System.Windows.Forms.Button();
-            this.RepairControl = new System.Windows.Forms.Button();
-            this.RepairControlGroup = new System.Windows.Forms.GroupBox();
-            this.OutRepair = new System.Windows.Forms.Button();
-            this.Query7_CustSelectMachine = new System.Windows.Forms.Button();
-            this.Query8_GetCustBalance = new System.Windows.Forms.Button();
-            this.Query9_EmployeeDayOff = new System.Windows.Forms.Button();
-            this.Query10_PayMach = new System.Windows.Forms.Button();
-            this.Query11_ShowAvailMach = new System.Windows.Forms.Button();
-            this.Query12_SetAvailMach = new System.Windows.Forms.Button();
-            this.Query13_CustPayMach = new System.Windows.Forms.Button();
-            this.Query15_BuyMach = new System.Windows.Forms.Button();
-            this.Query16_TotPayPer = new System.Windows.Forms.Button();
-            this.Query17_FindProfit = new System.Windows.Forms.Button();
+            this.BalanceLabel = new System.Windows.Forms.Label();
+            this.CustIDInput = new System.Windows.Forms.TextBox();
+            this.TypeMachIDLabel = new System.Windows.Forms.Label();
+            this.MachID_Input = new System.Windows.Forms.TextBox();
+            this.CustID_ForSelectMach = new System.Windows.Forms.TextBox();
+            this.EmpDayOffLabel = new System.Windows.Forms.Label();
+            this.EmpID_ForDayOff = new System.Windows.Forms.TextBox();
+            this.MachineToBeServiced_Label = new System.Windows.Forms.Label();
+            this.MachID_Servicing_input = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.RepairControlGroup.SuspendLayout();
+            this.PaymentControlGroup.SuspendLayout();
+            this.CustMachLookupControlGroup.SuspendLayout();
             this.EmployeeControlGroup.SuspendLayout();
             this.emp_crud.SuspendLayout();
             this.MachineControlGroup.SuspendLayout();
@@ -127,9 +139,6 @@
             this.CustomerControlGroup.SuspendLayout();
             this.CRUDFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.CustMachLookupControlGroup.SuspendLayout();
-            this.PaymentControlGroup.SuspendLayout();
-            this.RepairControlGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -165,13 +174,167 @@
             this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 0;
             // 
+            // RepairControlGroup
+            // 
+            this.RepairControlGroup.AutoSize = true;
+            this.RepairControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RepairControlGroup.Controls.Add(this.OutRepair);
+            this.RepairControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RepairControlGroup.Location = new System.Drawing.Point(0, 1669);
+            this.RepairControlGroup.Margin = new System.Windows.Forms.Padding(20);
+            this.RepairControlGroup.Name = "RepairControlGroup";
+            this.RepairControlGroup.Size = new System.Drawing.Size(385, 42);
+            this.RepairControlGroup.TabIndex = 26;
+            this.RepairControlGroup.TabStop = false;
+            this.RepairControlGroup.Text = "Repair Control Group";
+            this.RepairControlGroup.Visible = false;
+            // 
+            // OutRepair
+            // 
+            this.OutRepair.AutoSize = true;
+            this.OutRepair.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OutRepair.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OutRepair.Location = new System.Drawing.Point(3, 16);
+            this.OutRepair.Name = "OutRepair";
+            this.OutRepair.Size = new System.Drawing.Size(379, 23);
+            this.OutRepair.TabIndex = 0;
+            this.OutRepair.Text = "Output Repair";
+            this.OutRepair.UseVisualStyleBackColor = true;
+            this.OutRepair.Click += new System.EventHandler(this.OutRepair_Click);
+            // 
+            // RepairControl
+            // 
+            this.RepairControl.AutoSize = true;
+            this.RepairControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.RepairControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RepairControl.Location = new System.Drawing.Point(0, 1646);
+            this.RepairControl.Name = "RepairControl";
+            this.RepairControl.Size = new System.Drawing.Size(385, 23);
+            this.RepairControl.TabIndex = 25;
+            this.RepairControl.Text = "Repair Controls";
+            this.RepairControl.UseVisualStyleBackColor = true;
+            this.RepairControl.Click += new System.EventHandler(this.RepairControl_Click);
+            // 
+            // PaymentControlGroup
+            // 
+            this.PaymentControlGroup.AutoSize = true;
+            this.PaymentControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PaymentControlGroup.Controls.Add(this.Query16_TotPayPer);
+            this.PaymentControlGroup.Controls.Add(this.Query10_PayMach);
+            this.PaymentControlGroup.Controls.Add(this.OutPayment);
+            this.PaymentControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PaymentControlGroup.Location = new System.Drawing.Point(0, 1524);
+            this.PaymentControlGroup.Margin = new System.Windows.Forms.Padding(20);
+            this.PaymentControlGroup.Name = "PaymentControlGroup";
+            this.PaymentControlGroup.Padding = new System.Windows.Forms.Padding(20);
+            this.PaymentControlGroup.Size = new System.Drawing.Size(385, 122);
+            this.PaymentControlGroup.TabIndex = 24;
+            this.PaymentControlGroup.TabStop = false;
+            this.PaymentControlGroup.Text = "Payment Control Group";
+            this.PaymentControlGroup.Visible = false;
+            // 
+            // Query16_TotPayPer
+            // 
+            this.Query16_TotPayPer.AutoSize = true;
+            this.Query16_TotPayPer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query16_TotPayPer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query16_TotPayPer.Location = new System.Drawing.Point(20, 79);
+            this.Query16_TotPayPer.Name = "Query16_TotPayPer";
+            this.Query16_TotPayPer.Size = new System.Drawing.Size(345, 23);
+            this.Query16_TotPayPer.TabIndex = 2;
+            this.Query16_TotPayPer.Text = "Query 16 Total Amount Made By Machines From Query 15";
+            this.Query16_TotPayPer.UseVisualStyleBackColor = true;
+            this.Query16_TotPayPer.Click += new System.EventHandler(this.Query16_TotPayPer_Click);
+            // 
+            // Query10_PayMach
+            // 
+            this.Query10_PayMach.AutoSize = true;
+            this.Query10_PayMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query10_PayMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query10_PayMach.Location = new System.Drawing.Point(20, 56);
+            this.Query10_PayMach.Name = "Query10_PayMach";
+            this.Query10_PayMach.Size = new System.Drawing.Size(345, 23);
+            this.Query10_PayMach.TabIndex = 1;
+            this.Query10_PayMach.Text = "Query 10 Profit Between Two Date (input date in employee control)";
+            this.Query10_PayMach.UseVisualStyleBackColor = true;
+            this.Query10_PayMach.Click += new System.EventHandler(this.Query10_PayMach_Click);
+            // 
+            // OutPayment
+            // 
+            this.OutPayment.AutoSize = true;
+            this.OutPayment.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OutPayment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OutPayment.Location = new System.Drawing.Point(20, 33);
+            this.OutPayment.Margin = new System.Windows.Forms.Padding(10);
+            this.OutPayment.Name = "OutPayment";
+            this.OutPayment.Size = new System.Drawing.Size(345, 23);
+            this.OutPayment.TabIndex = 0;
+            this.OutPayment.Text = "Output Payment";
+            this.OutPayment.UseVisualStyleBackColor = true;
+            this.OutPayment.Click += new System.EventHandler(this.OutPayment_Click);
+            // 
+            // PaymentControl
+            // 
+            this.PaymentControl.AutoSize = true;
+            this.PaymentControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PaymentControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PaymentControl.Location = new System.Drawing.Point(0, 1501);
+            this.PaymentControl.Name = "PaymentControl";
+            this.PaymentControl.Size = new System.Drawing.Size(385, 23);
+            this.PaymentControl.TabIndex = 23;
+            this.PaymentControl.Text = "Payment Controls";
+            this.PaymentControl.UseVisualStyleBackColor = true;
+            this.PaymentControl.Click += new System.EventHandler(this.PaymentControl_Click);
+            // 
+            // CustMachLookupControlGroup
+            // 
+            this.CustMachLookupControlGroup.AutoSize = true;
+            this.CustMachLookupControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CustMachLookupControlGroup.Controls.Add(this.OutMachCustLookup);
+            this.CustMachLookupControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CustMachLookupControlGroup.Location = new System.Drawing.Point(0, 1425);
+            this.CustMachLookupControlGroup.Margin = new System.Windows.Forms.Padding(20);
+            this.CustMachLookupControlGroup.Name = "CustMachLookupControlGroup";
+            this.CustMachLookupControlGroup.Padding = new System.Windows.Forms.Padding(20);
+            this.CustMachLookupControlGroup.Size = new System.Drawing.Size(385, 76);
+            this.CustMachLookupControlGroup.TabIndex = 22;
+            this.CustMachLookupControlGroup.TabStop = false;
+            this.CustMachLookupControlGroup.Text = "Lookup Table Control Group";
+            this.CustMachLookupControlGroup.Visible = false;
+            // 
+            // OutMachCustLookup
+            // 
+            this.OutMachCustLookup.AutoSize = true;
+            this.OutMachCustLookup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OutMachCustLookup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OutMachCustLookup.Location = new System.Drawing.Point(20, 33);
+            this.OutMachCustLookup.Name = "OutMachCustLookup";
+            this.OutMachCustLookup.Size = new System.Drawing.Size(345, 23);
+            this.OutMachCustLookup.TabIndex = 0;
+            this.OutMachCustLookup.Text = "Output Lookup Table";
+            this.OutMachCustLookup.UseVisualStyleBackColor = true;
+            this.OutMachCustLookup.Click += new System.EventHandler(this.OutMachCustLookup_Click);
+            // 
+            // MachCustUse
+            // 
+            this.MachCustUse.AutoSize = true;
+            this.MachCustUse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MachCustUse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MachCustUse.Location = new System.Drawing.Point(0, 1402);
+            this.MachCustUse.Name = "MachCustUse";
+            this.MachCustUse.Size = new System.Drawing.Size(385, 23);
+            this.MachCustUse.TabIndex = 21;
+            this.MachCustUse.Text = "Machine Customer Lookup Controls";
+            this.MachCustUse.UseVisualStyleBackColor = true;
+            this.MachCustUse.Click += new System.EventHandler(this.MachCustUse_Click);
+            // 
             // SetConStr
             // 
             this.SetConStr.AutoSize = true;
             this.SetConStr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SetConStr.Dock = System.Windows.Forms.DockStyle.Top;
             this.SetConStr.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetConStr.Location = new System.Drawing.Point(0, 1224);
+            this.SetConStr.Location = new System.Drawing.Point(0, 1376);
             this.SetConStr.Name = "SetConStr";
             this.SetConStr.Size = new System.Drawing.Size(385, 26);
             this.SetConStr.TabIndex = 20;
@@ -183,6 +346,12 @@
             // 
             this.EmployeeControlGroup.AutoSize = true;
             this.EmployeeControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.EmployeeControlGroup.Controls.Add(this.MachID_Servicing_input);
+            this.EmployeeControlGroup.Controls.Add(this.MachineToBeServiced_Label);
+            this.EmployeeControlGroup.Controls.Add(this.EmpID_ForDayOff);
+            this.EmployeeControlGroup.Controls.Add(this.EmpDayOffLabel);
+            this.EmployeeControlGroup.Controls.Add(this.CustIDInput);
+            this.EmployeeControlGroup.Controls.Add(this.BalanceLabel);
             this.EmployeeControlGroup.Controls.Add(this.Query17_FindProfit);
             this.EmployeeControlGroup.Controls.Add(this.Query15_BuyMach);
             this.EmployeeControlGroup.Controls.Add(this.Query9_EmployeeDayOff);
@@ -193,15 +362,66 @@
             this.EmployeeControlGroup.Controls.Add(this.UpdateEmployee);
             this.EmployeeControlGroup.Controls.Add(this.OutEmployees);
             this.EmployeeControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.EmployeeControlGroup.Location = new System.Drawing.Point(0, 947);
+            this.EmployeeControlGroup.Location = new System.Drawing.Point(0, 1000);
             this.EmployeeControlGroup.Margin = new System.Windows.Forms.Padding(20);
             this.EmployeeControlGroup.Name = "EmployeeControlGroup";
             this.EmployeeControlGroup.Padding = new System.Windows.Forms.Padding(20);
-            this.EmployeeControlGroup.Size = new System.Drawing.Size(385, 277);
+            this.EmployeeControlGroup.Size = new System.Drawing.Size(385, 376);
             this.EmployeeControlGroup.TabIndex = 19;
             this.EmployeeControlGroup.TabStop = false;
             this.EmployeeControlGroup.Text = "Employee Control Group";
             this.EmployeeControlGroup.Visible = false;
+            // 
+            // Query17_FindProfit
+            // 
+            this.Query17_FindProfit.AutoSize = true;
+            this.Query17_FindProfit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query17_FindProfit.Location = new System.Drawing.Point(20, 194);
+            this.Query17_FindProfit.Name = "Query17_FindProfit";
+            this.Query17_FindProfit.Size = new System.Drawing.Size(345, 23);
+            this.Query17_FindProfit.TabIndex = 15;
+            this.Query17_FindProfit.Text = "Query 17 Find Profit Between Query 16 and 15";
+            this.Query17_FindProfit.UseVisualStyleBackColor = true;
+            this.Query17_FindProfit.Click += new System.EventHandler(this.Query17_FindProfit_Click);
+            // 
+            // Query15_BuyMach
+            // 
+            this.Query15_BuyMach.AutoSize = true;
+            this.Query15_BuyMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query15_BuyMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query15_BuyMach.Location = new System.Drawing.Point(20, 171);
+            this.Query15_BuyMach.Name = "Query15_BuyMach";
+            this.Query15_BuyMach.Size = new System.Drawing.Size(345, 23);
+            this.Query15_BuyMach.TabIndex = 14;
+            this.Query15_BuyMach.Text = "Query 15 Get payments made to supplier of over 10 machines";
+            this.Query15_BuyMach.UseVisualStyleBackColor = true;
+            this.Query15_BuyMach.Click += new System.EventHandler(this.Query15_BuyMach_Click);
+            // 
+            // Query9_EmployeeDayOff
+            // 
+            this.Query9_EmployeeDayOff.AutoSize = true;
+            this.Query9_EmployeeDayOff.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query9_EmployeeDayOff.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query9_EmployeeDayOff.Location = new System.Drawing.Point(20, 148);
+            this.Query9_EmployeeDayOff.Name = "Query9_EmployeeDayOff";
+            this.Query9_EmployeeDayOff.Size = new System.Drawing.Size(345, 23);
+            this.Query9_EmployeeDayOff.TabIndex = 13;
+            this.Query9_EmployeeDayOff.Text = " Query 9 Employee Request Day Off (input id below)";
+            this.Query9_EmployeeDayOff.UseVisualStyleBackColor = true;
+            this.Query9_EmployeeDayOff.Click += new System.EventHandler(this.Query9_EmployeeDayOff_Click);
+            // 
+            // Query8_GetCustBalance
+            // 
+            this.Query8_GetCustBalance.AutoSize = true;
+            this.Query8_GetCustBalance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query8_GetCustBalance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query8_GetCustBalance.Location = new System.Drawing.Point(20, 125);
+            this.Query8_GetCustBalance.Name = "Query8_GetCustBalance";
+            this.Query8_GetCustBalance.Size = new System.Drawing.Size(345, 23);
+            this.Query8_GetCustBalance.TabIndex = 12;
+            this.Query8_GetCustBalance.Text = "Query 8 Get Customer Balance";
+            this.Query8_GetCustBalance.UseVisualStyleBackColor = true;
+            this.Query8_GetCustBalance.Click += new System.EventHandler(this.Query8_GetCustBalance_Click);
             // 
             // emp_crud
             // 
@@ -216,7 +436,7 @@
             this.emp_crud.Controls.Add(this.ssn);
             this.emp_crud.Controls.Add(this.emp_id);
             this.emp_crud.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.emp_crud.Location = new System.Drawing.Point(20, 217);
+            this.emp_crud.Location = new System.Drawing.Point(20, 316);
             this.emp_crud.Margin = new System.Windows.Forms.Padding(10);
             this.emp_crud.MinimumSize = new System.Drawing.Size(10, 40);
             this.emp_crud.Name = "emp_crud";
@@ -346,7 +566,7 @@
             this.EmployeeControls.AutoSize = true;
             this.EmployeeControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.EmployeeControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.EmployeeControls.Location = new System.Drawing.Point(0, 924);
+            this.EmployeeControls.Location = new System.Drawing.Point(0, 977);
             this.EmployeeControls.Name = "EmployeeControls";
             this.EmployeeControls.Size = new System.Drawing.Size(385, 23);
             this.EmployeeControls.TabIndex = 18;
@@ -366,7 +586,7 @@
             this.MachineControlGroup.Controls.Add(this.UpdateMachine);
             this.MachineControlGroup.Controls.Add(this.OutMachine);
             this.MachineControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MachineControlGroup.Location = new System.Drawing.Point(0, 693);
+            this.MachineControlGroup.Location = new System.Drawing.Point(0, 746);
             this.MachineControlGroup.Margin = new System.Windows.Forms.Padding(20);
             this.MachineControlGroup.Name = "MachineControlGroup";
             this.MachineControlGroup.Padding = new System.Windows.Forms.Padding(20);
@@ -375,6 +595,32 @@
             this.MachineControlGroup.TabStop = false;
             this.MachineControlGroup.Text = "Machine Control Group";
             this.MachineControlGroup.Visible = false;
+            // 
+            // Query12_SetAvailMach
+            // 
+            this.Query12_SetAvailMach.AutoSize = true;
+            this.Query12_SetAvailMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query12_SetAvailMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query12_SetAvailMach.Location = new System.Drawing.Point(20, 148);
+            this.Query12_SetAvailMach.Name = "Query12_SetAvailMach";
+            this.Query12_SetAvailMach.Size = new System.Drawing.Size(345, 23);
+            this.Query12_SetAvailMach.TabIndex = 14;
+            this.Query12_SetAvailMach.Text = "Query 12 Show all machines who\'s uses are or are over 500";
+            this.Query12_SetAvailMach.UseVisualStyleBackColor = true;
+            this.Query12_SetAvailMach.Click += new System.EventHandler(this.Query12_ShowAvailMach_Click);
+            // 
+            // Query11_ShowAvailMach
+            // 
+            this.Query11_ShowAvailMach.AutoSize = true;
+            this.Query11_ShowAvailMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query11_ShowAvailMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query11_ShowAvailMach.Location = new System.Drawing.Point(20, 125);
+            this.Query11_ShowAvailMach.Name = "Query11_ShowAvailMach";
+            this.Query11_ShowAvailMach.Size = new System.Drawing.Size(345, 23);
+            this.Query11_ShowAvailMach.TabIndex = 13;
+            this.Query11_ShowAvailMach.Text = "Query 11 Get All Customers Who Use Machine (input id below)";
+            this.Query11_ShowAvailMach.UseVisualStyleBackColor = true;
+            this.Query11_ShowAvailMach.Click += new System.EventHandler(this.Query11_ShowAvailMach_Click);
             // 
             // mach_crud
             // 
@@ -501,7 +747,7 @@
             this.MachineControls.AutoSize = true;
             this.MachineControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MachineControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MachineControls.Location = new System.Drawing.Point(0, 670);
+            this.MachineControls.Location = new System.Drawing.Point(0, 723);
             this.MachineControls.Name = "MachineControls";
             this.MachineControls.Size = new System.Drawing.Size(385, 23);
             this.MachineControls.TabIndex = 16;
@@ -519,7 +765,7 @@
             this.SupplierControlGroup.Controls.Add(this.UpdateSupplier);
             this.SupplierControlGroup.Controls.Add(this.OutSuppliers);
             this.SupplierControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SupplierControlGroup.Location = new System.Drawing.Point(0, 485);
+            this.SupplierControlGroup.Location = new System.Drawing.Point(0, 538);
             this.SupplierControlGroup.Margin = new System.Windows.Forms.Padding(20);
             this.SupplierControlGroup.Name = "SupplierControlGroup";
             this.SupplierControlGroup.Padding = new System.Windows.Forms.Padding(20);
@@ -618,7 +864,7 @@
             this.SupplierControls.AutoSize = true;
             this.SupplierControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SupplierControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SupplierControls.Location = new System.Drawing.Point(0, 462);
+            this.SupplierControls.Location = new System.Drawing.Point(0, 515);
             this.SupplierControls.Name = "SupplierControls";
             this.SupplierControls.Size = new System.Drawing.Size(385, 23);
             this.SupplierControls.TabIndex = 14;
@@ -636,7 +882,7 @@
             this.LocationControlGroup.Controls.Add(this.UpdateLocation);
             this.LocationControlGroup.Controls.Add(this.OutputLocation);
             this.LocationControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LocationControlGroup.Location = new System.Drawing.Point(0, 277);
+            this.LocationControlGroup.Location = new System.Drawing.Point(0, 330);
             this.LocationControlGroup.Margin = new System.Windows.Forms.Padding(20);
             this.LocationControlGroup.Name = "LocationControlGroup";
             this.LocationControlGroup.Padding = new System.Windows.Forms.Padding(20);
@@ -771,7 +1017,7 @@
             this.LocationControl.AutoSize = true;
             this.LocationControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LocationControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LocationControl.Location = new System.Drawing.Point(0, 254);
+            this.LocationControl.Location = new System.Drawing.Point(0, 307);
             this.LocationControl.Name = "LocationControl";
             this.LocationControl.Size = new System.Drawing.Size(385, 23);
             this.LocationControl.TabIndex = 12;
@@ -784,6 +1030,9 @@
             this.CustomerControlGroup.AutoSize = true;
             this.CustomerControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CustomerControlGroup.BackColor = System.Drawing.SystemColors.Control;
+            this.CustomerControlGroup.Controls.Add(this.CustID_ForSelectMach);
+            this.CustomerControlGroup.Controls.Add(this.MachID_Input);
+            this.CustomerControlGroup.Controls.Add(this.TypeMachIDLabel);
             this.CustomerControlGroup.Controls.Add(this.Query13_CustPayMach);
             this.CustomerControlGroup.Controls.Add(this.Query7_CustSelectMachine);
             this.CustomerControlGroup.Controls.Add(this.OutCustomers);
@@ -797,18 +1046,45 @@
             this.CustomerControlGroup.Margin = new System.Windows.Forms.Padding(20);
             this.CustomerControlGroup.Name = "CustomerControlGroup";
             this.CustomerControlGroup.Padding = new System.Windows.Forms.Padding(20);
-            this.CustomerControlGroup.Size = new System.Drawing.Size(385, 231);
+            this.CustomerControlGroup.Size = new System.Drawing.Size(385, 284);
             this.CustomerControlGroup.TabIndex = 11;
             this.CustomerControlGroup.TabStop = false;
             this.CustomerControlGroup.Text = "Customer Control Group";
             this.CustomerControlGroup.Visible = false;
+            // 
+            // Query13_CustPayMach
+            // 
+            this.Query13_CustPayMach.AutoSize = true;
+            this.Query13_CustPayMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query13_CustPayMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query13_CustPayMach.Location = new System.Drawing.Point(20, 56);
+            this.Query13_CustPayMach.Name = "Query13_CustPayMach";
+            this.Query13_CustPayMach.Size = new System.Drawing.Size(345, 23);
+            this.Query13_CustPayMach.TabIndex = 10;
+            this.Query13_CustPayMach.Text = "Query 13 Find All Machines Made by One Supplier (input in supplier control id box" +
+    ")";
+            this.Query13_CustPayMach.UseVisualStyleBackColor = true;
+            this.Query13_CustPayMach.Click += new System.EventHandler(this.Query13_CustPayMach_Click);
+            // 
+            // Query7_CustSelectMachine
+            // 
+            this.Query7_CustSelectMachine.AutoSize = true;
+            this.Query7_CustSelectMachine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Query7_CustSelectMachine.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Query7_CustSelectMachine.Location = new System.Drawing.Point(20, 33);
+            this.Query7_CustSelectMachine.Name = "Query7_CustSelectMachine";
+            this.Query7_CustSelectMachine.Size = new System.Drawing.Size(345, 23);
+            this.Query7_CustSelectMachine.TabIndex = 9;
+            this.Query7_CustSelectMachine.Text = "Query 7 Customer Request Machine (input in two text boxes below)";
+            this.Query7_CustSelectMachine.UseVisualStyleBackColor = true;
+            this.Query7_CustSelectMachine.Click += new System.EventHandler(this.Query7_CustSelectMachine_Click);
             // 
             // OutCustomers
             // 
             this.OutCustomers.AutoSize = true;
             this.OutCustomers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.OutCustomers.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.OutCustomers.Location = new System.Drawing.Point(20, 79);
+            this.OutCustomers.Location = new System.Drawing.Point(20, 132);
             this.OutCustomers.Name = "OutCustomers";
             this.OutCustomers.Size = new System.Drawing.Size(345, 23);
             this.OutCustomers.TabIndex = 6;
@@ -821,7 +1097,7 @@
             this.UpdateCust.AutoSize = true;
             this.UpdateCust.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.UpdateCust.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UpdateCust.Location = new System.Drawing.Point(20, 102);
+            this.UpdateCust.Location = new System.Drawing.Point(20, 155);
             this.UpdateCust.Margin = new System.Windows.Forms.Padding(1);
             this.UpdateCust.Name = "UpdateCust";
             this.UpdateCust.Size = new System.Drawing.Size(345, 23);
@@ -835,7 +1111,7 @@
             this.InsertCust.AutoSize = true;
             this.InsertCust.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.InsertCust.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.InsertCust.Location = new System.Drawing.Point(20, 125);
+            this.InsertCust.Location = new System.Drawing.Point(20, 178);
             this.InsertCust.Name = "InsertCust";
             this.InsertCust.Size = new System.Drawing.Size(345, 23);
             this.InsertCust.TabIndex = 0;
@@ -848,7 +1124,7 @@
             this.DeleteCust.AutoSize = true;
             this.DeleteCust.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DeleteCust.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DeleteCust.Location = new System.Drawing.Point(20, 148);
+            this.DeleteCust.Location = new System.Drawing.Point(20, 201);
             this.DeleteCust.Margin = new System.Windows.Forms.Padding(1);
             this.DeleteCust.Name = "DeleteCust";
             this.DeleteCust.Size = new System.Drawing.Size(345, 23);
@@ -867,7 +1143,7 @@
             this.CRUDFields.Controls.Add(this.cust_f_name);
             this.CRUDFields.Controls.Add(this.CustID);
             this.CRUDFields.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CRUDFields.Location = new System.Drawing.Point(20, 171);
+            this.CRUDFields.Location = new System.Drawing.Point(20, 224);
             this.CRUDFields.Margin = new System.Windows.Forms.Padding(10);
             this.CRUDFields.MinimumSize = new System.Drawing.Size(10, 40);
             this.CRUDFields.Name = "CRUDFields";
@@ -943,262 +1219,85 @@
             this.dataGridView.Size = new System.Drawing.Size(776, 1901);
             this.dataGridView.TabIndex = 6;
             // 
-            // MachCustUse
+            // BalanceLabel
             // 
-            this.MachCustUse.AutoSize = true;
-            this.MachCustUse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.MachCustUse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MachCustUse.Location = new System.Drawing.Point(0, 1250);
-            this.MachCustUse.Name = "MachCustUse";
-            this.MachCustUse.Size = new System.Drawing.Size(385, 23);
-            this.MachCustUse.TabIndex = 21;
-            this.MachCustUse.Text = "Machine Customer Lookup Controls";
-            this.MachCustUse.UseVisualStyleBackColor = true;
-            this.MachCustUse.Click += new System.EventHandler(this.MachCustUse_Click);
+            this.BalanceLabel.AutoSize = true;
+            this.BalanceLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BalanceLabel.Location = new System.Drawing.Point(20, 217);
+            this.BalanceLabel.Name = "BalanceLabel";
+            this.BalanceLabel.Size = new System.Drawing.Size(184, 13);
+            this.BalanceLabel.TabIndex = 17;
+            this.BalanceLabel.Text = "Type Customer ID For Balance Below";
             // 
-            // CustMachLookupControlGroup
+            // CustIDInput
             // 
-            this.CustMachLookupControlGroup.AutoSize = true;
-            this.CustMachLookupControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CustMachLookupControlGroup.Controls.Add(this.OutMachCustLookup);
-            this.CustMachLookupControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CustMachLookupControlGroup.Location = new System.Drawing.Point(0, 1273);
-            this.CustMachLookupControlGroup.Margin = new System.Windows.Forms.Padding(20);
-            this.CustMachLookupControlGroup.Name = "CustMachLookupControlGroup";
-            this.CustMachLookupControlGroup.Padding = new System.Windows.Forms.Padding(20);
-            this.CustMachLookupControlGroup.Size = new System.Drawing.Size(385, 76);
-            this.CustMachLookupControlGroup.TabIndex = 22;
-            this.CustMachLookupControlGroup.TabStop = false;
-            this.CustMachLookupControlGroup.Text = "Lookup Table Control Group";
-            this.CustMachLookupControlGroup.Visible = false;
+            this.CustIDInput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CustIDInput.Location = new System.Drawing.Point(20, 230);
+            this.CustIDInput.Name = "CustIDInput";
+            this.CustIDInput.Size = new System.Drawing.Size(345, 20);
+            this.CustIDInput.TabIndex = 18;
             // 
-            // OutMachCustLookup
+            // TypeMachIDLabel
             // 
-            this.OutMachCustLookup.AutoSize = true;
-            this.OutMachCustLookup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OutMachCustLookup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OutMachCustLookup.Location = new System.Drawing.Point(20, 33);
-            this.OutMachCustLookup.Name = "OutMachCustLookup";
-            this.OutMachCustLookup.Size = new System.Drawing.Size(345, 23);
-            this.OutMachCustLookup.TabIndex = 0;
-            this.OutMachCustLookup.Text = "Output Lookup Table";
-            this.OutMachCustLookup.UseVisualStyleBackColor = true;
-            this.OutMachCustLookup.Click += new System.EventHandler(this.OutMachCustLookup_Click);
+            this.TypeMachIDLabel.AutoSize = true;
+            this.TypeMachIDLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TypeMachIDLabel.Location = new System.Drawing.Point(20, 79);
+            this.TypeMachIDLabel.Name = "TypeMachIDLabel";
+            this.TypeMachIDLabel.Size = new System.Drawing.Size(180, 13);
+            this.TypeMachIDLabel.TabIndex = 11;
+            this.TypeMachIDLabel.Text = "Type Machine ID and Cust ID Below";
             // 
-            // PaymentControl
+            // MachID_Input
             // 
-            this.PaymentControl.AutoSize = true;
-            this.PaymentControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PaymentControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PaymentControl.Location = new System.Drawing.Point(0, 1349);
-            this.PaymentControl.Name = "PaymentControl";
-            this.PaymentControl.Size = new System.Drawing.Size(385, 23);
-            this.PaymentControl.TabIndex = 23;
-            this.PaymentControl.Text = "Payment Controls";
-            this.PaymentControl.UseVisualStyleBackColor = true;
-            this.PaymentControl.Click += new System.EventHandler(this.PaymentControl_Click);
+            this.MachID_Input.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MachID_Input.Location = new System.Drawing.Point(20, 92);
+            this.MachID_Input.Name = "MachID_Input";
+            this.MachID_Input.Size = new System.Drawing.Size(345, 20);
+            this.MachID_Input.TabIndex = 12;
             // 
-            // PaymentControlGroup
+            // CustID_ForSelectMach
             // 
-            this.PaymentControlGroup.AutoSize = true;
-            this.PaymentControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PaymentControlGroup.Controls.Add(this.Query16_TotPayPer);
-            this.PaymentControlGroup.Controls.Add(this.Query10_PayMach);
-            this.PaymentControlGroup.Controls.Add(this.OutPayment);
-            this.PaymentControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PaymentControlGroup.Location = new System.Drawing.Point(0, 1372);
-            this.PaymentControlGroup.Margin = new System.Windows.Forms.Padding(20);
-            this.PaymentControlGroup.Name = "PaymentControlGroup";
-            this.PaymentControlGroup.Padding = new System.Windows.Forms.Padding(20);
-            this.PaymentControlGroup.Size = new System.Drawing.Size(385, 122);
-            this.PaymentControlGroup.TabIndex = 24;
-            this.PaymentControlGroup.TabStop = false;
-            this.PaymentControlGroup.Text = "Payment Control Group";
-            this.PaymentControlGroup.Visible = false;
+            this.CustID_ForSelectMach.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CustID_ForSelectMach.Location = new System.Drawing.Point(20, 112);
+            this.CustID_ForSelectMach.Name = "CustID_ForSelectMach";
+            this.CustID_ForSelectMach.Size = new System.Drawing.Size(345, 20);
+            this.CustID_ForSelectMach.TabIndex = 13;
             // 
-            // OutPayment
+            // EmpDayOffLabel
             // 
-            this.OutPayment.AutoSize = true;
-            this.OutPayment.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OutPayment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OutPayment.Location = new System.Drawing.Point(20, 33);
-            this.OutPayment.Margin = new System.Windows.Forms.Padding(10);
-            this.OutPayment.Name = "OutPayment";
-            this.OutPayment.Size = new System.Drawing.Size(345, 23);
-            this.OutPayment.TabIndex = 0;
-            this.OutPayment.Text = "Output Payment";
-            this.OutPayment.UseVisualStyleBackColor = true;
-            this.OutPayment.Click += new System.EventHandler(this.OutPayment_Click);
+            this.EmpDayOffLabel.AutoSize = true;
+            this.EmpDayOffLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmpDayOffLabel.Location = new System.Drawing.Point(20, 250);
+            this.EmpDayOffLabel.Name = "EmpDayOffLabel";
+            this.EmpDayOffLabel.Size = new System.Drawing.Size(188, 13);
+            this.EmpDayOffLabel.TabIndex = 19;
+            this.EmpDayOffLabel.Text = "Type Employee To Schedule Days Off";
             // 
-            // RepairControl
+            // EmpID_ForDayOff
             // 
-            this.RepairControl.AutoSize = true;
-            this.RepairControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.RepairControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RepairControl.Location = new System.Drawing.Point(0, 1494);
-            this.RepairControl.Name = "RepairControl";
-            this.RepairControl.Size = new System.Drawing.Size(385, 23);
-            this.RepairControl.TabIndex = 25;
-            this.RepairControl.Text = "Repair Controls";
-            this.RepairControl.UseVisualStyleBackColor = true;
-            this.RepairControl.Click += new System.EventHandler(this.RepairControl_Click);
+            this.EmpID_ForDayOff.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmpID_ForDayOff.Location = new System.Drawing.Point(20, 263);
+            this.EmpID_ForDayOff.Name = "EmpID_ForDayOff";
+            this.EmpID_ForDayOff.Size = new System.Drawing.Size(345, 20);
+            this.EmpID_ForDayOff.TabIndex = 20;
             // 
-            // RepairControlGroup
+            // MachineToBeServiced_Label
             // 
-            this.RepairControlGroup.AutoSize = true;
-            this.RepairControlGroup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.RepairControlGroup.Controls.Add(this.OutRepair);
-            this.RepairControlGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RepairControlGroup.Location = new System.Drawing.Point(0, 1517);
-            this.RepairControlGroup.Margin = new System.Windows.Forms.Padding(20);
-            this.RepairControlGroup.Name = "RepairControlGroup";
-            this.RepairControlGroup.Size = new System.Drawing.Size(385, 42);
-            this.RepairControlGroup.TabIndex = 26;
-            this.RepairControlGroup.TabStop = false;
-            this.RepairControlGroup.Text = "Repair Control Group";
-            this.RepairControlGroup.Visible = false;
+            this.MachineToBeServiced_Label.AutoSize = true;
+            this.MachineToBeServiced_Label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MachineToBeServiced_Label.Location = new System.Drawing.Point(20, 283);
+            this.MachineToBeServiced_Label.Name = "MachineToBeServiced_Label";
+            this.MachineToBeServiced_Label.Size = new System.Drawing.Size(161, 13);
+            this.MachineToBeServiced_Label.TabIndex = 22;
+            this.MachineToBeServiced_Label.Text = "Type Machine ID to be Serviced";
             // 
-            // OutRepair
+            // MachID_Servicing_input
             // 
-            this.OutRepair.AutoSize = true;
-            this.OutRepair.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.OutRepair.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OutRepair.Location = new System.Drawing.Point(3, 16);
-            this.OutRepair.Name = "OutRepair";
-            this.OutRepair.Size = new System.Drawing.Size(379, 23);
-            this.OutRepair.TabIndex = 0;
-            this.OutRepair.Text = "Output Repair";
-            this.OutRepair.UseVisualStyleBackColor = true;
-            this.OutRepair.Click += new System.EventHandler(this.OutRepair_Click);
-            // 
-            // Query7_CustSelectMachine
-            // 
-            this.Query7_CustSelectMachine.AutoSize = true;
-            this.Query7_CustSelectMachine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query7_CustSelectMachine.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query7_CustSelectMachine.Location = new System.Drawing.Point(20, 33);
-            this.Query7_CustSelectMachine.Name = "Query7_CustSelectMachine";
-            this.Query7_CustSelectMachine.Size = new System.Drawing.Size(345, 23);
-            this.Query7_CustSelectMachine.TabIndex = 9;
-            this.Query7_CustSelectMachine.Text = "Customer Select Machine";
-            this.Query7_CustSelectMachine.UseVisualStyleBackColor = true;
-            this.Query7_CustSelectMachine.Click += new System.EventHandler(this.Query7_CustSelectMachine_Click);
-            // 
-            // Query8_GetCustBalance
-            // 
-            this.Query8_GetCustBalance.AutoSize = true;
-            this.Query8_GetCustBalance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query8_GetCustBalance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query8_GetCustBalance.Location = new System.Drawing.Point(20, 125);
-            this.Query8_GetCustBalance.Name = "Query8_GetCustBalance";
-            this.Query8_GetCustBalance.Size = new System.Drawing.Size(345, 23);
-            this.Query8_GetCustBalance.TabIndex = 12;
-            this.Query8_GetCustBalance.Text = "Get Customer Balance";
-            this.Query8_GetCustBalance.UseVisualStyleBackColor = true;
-            this.Query8_GetCustBalance.Click += new System.EventHandler(this.Query8_GetCustBalance_Click);
-            // 
-            // Query9_EmployeeDayOff
-            // 
-            this.Query9_EmployeeDayOff.AutoSize = true;
-            this.Query9_EmployeeDayOff.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query9_EmployeeDayOff.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query9_EmployeeDayOff.Location = new System.Drawing.Point(20, 148);
-            this.Query9_EmployeeDayOff.Name = "Query9_EmployeeDayOff";
-            this.Query9_EmployeeDayOff.Size = new System.Drawing.Size(345, 23);
-            this.Query9_EmployeeDayOff.TabIndex = 13;
-            this.Query9_EmployeeDayOff.Text = "Employee Request Days Off";
-            this.Query9_EmployeeDayOff.UseVisualStyleBackColor = true;
-            this.Query9_EmployeeDayOff.Click += new System.EventHandler(this.Query9_EmployeeDayOff_Click);
-            // 
-            // Query10_PayMach
-            // 
-            this.Query10_PayMach.AutoSize = true;
-            this.Query10_PayMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query10_PayMach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query10_PayMach.Location = new System.Drawing.Point(20, 56);
-            this.Query10_PayMach.Name = "Query10_PayMach";
-            this.Query10_PayMach.Size = new System.Drawing.Size(345, 23);
-            this.Query10_PayMach.TabIndex = 1;
-            this.Query10_PayMach.Text = "Pay on Machine";
-            this.Query10_PayMach.UseVisualStyleBackColor = true;
-            this.Query10_PayMach.Click += new System.EventHandler(this.Query10_PayMach_Click);
-            // 
-            // Query11_ShowAvailMach
-            // 
-            this.Query11_ShowAvailMach.AutoSize = true;
-            this.Query11_ShowAvailMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query11_ShowAvailMach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query11_ShowAvailMach.Location = new System.Drawing.Point(20, 125);
-            this.Query11_ShowAvailMach.Name = "Query11_ShowAvailMach";
-            this.Query11_ShowAvailMach.Size = new System.Drawing.Size(345, 23);
-            this.Query11_ShowAvailMach.TabIndex = 13;
-            this.Query11_ShowAvailMach.Text = "Show Available Machines";
-            this.Query11_ShowAvailMach.UseVisualStyleBackColor = true;
-            this.Query11_ShowAvailMach.Click += new System.EventHandler(this.Query11_ShowAvailMach_Click);
-            // 
-            // Query12_SetAvailMach
-            // 
-            this.Query12_SetAvailMach.AutoSize = true;
-            this.Query12_SetAvailMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query12_SetAvailMach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query12_SetAvailMach.Location = new System.Drawing.Point(20, 148);
-            this.Query12_SetAvailMach.Name = "Query12_SetAvailMach";
-            this.Query12_SetAvailMach.Size = new System.Drawing.Size(345, 23);
-            this.Query12_SetAvailMach.TabIndex = 14;
-            this.Query12_SetAvailMach.Text = "Set Available Machines";
-            this.Query12_SetAvailMach.UseVisualStyleBackColor = true;
-            this.Query12_SetAvailMach.Click += new System.EventHandler(this.Query12_ShowAvailMach_Click);
-            // 
-            // Query13_CustPayMach
-            // 
-            this.Query13_CustPayMach.AutoSize = true;
-            this.Query13_CustPayMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query13_CustPayMach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query13_CustPayMach.Location = new System.Drawing.Point(20, 56);
-            this.Query13_CustPayMach.Name = "Query13_CustPayMach";
-            this.Query13_CustPayMach.Size = new System.Drawing.Size(345, 23);
-            this.Query13_CustPayMach.TabIndex = 10;
-            this.Query13_CustPayMach.Text = "Customer Pays";
-            this.Query13_CustPayMach.UseVisualStyleBackColor = true;
-            this.Query13_CustPayMach.Click += new System.EventHandler(this.Query13_CustPayMach_Click);
-            // 
-            // Query15_BuyMach
-            // 
-            this.Query15_BuyMach.AutoSize = true;
-            this.Query15_BuyMach.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query15_BuyMach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query15_BuyMach.Location = new System.Drawing.Point(20, 171);
-            this.Query15_BuyMach.Name = "Query15_BuyMach";
-            this.Query15_BuyMach.Size = new System.Drawing.Size(345, 23);
-            this.Query15_BuyMach.TabIndex = 14;
-            this.Query15_BuyMach.Text = "Buy Machine From Supplier";
-            this.Query15_BuyMach.UseVisualStyleBackColor = true;
-            this.Query15_BuyMach.Click += new System.EventHandler(this.Query15_BuyMach_Click);
-            // 
-            // Query16_TotPayPer
-            // 
-            this.Query16_TotPayPer.AutoSize = true;
-            this.Query16_TotPayPer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Query16_TotPayPer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query16_TotPayPer.Location = new System.Drawing.Point(20, 79);
-            this.Query16_TotPayPer.Name = "Query16_TotPayPer";
-            this.Query16_TotPayPer.Size = new System.Drawing.Size(345, 23);
-            this.Query16_TotPayPer.TabIndex = 2;
-            this.Query16_TotPayPer.Text = "Total Payment Over Period";
-            this.Query16_TotPayPer.UseVisualStyleBackColor = true;
-            this.Query16_TotPayPer.Click += new System.EventHandler(this.Query16_TotPayPer_Click);
-            // 
-            // Query17_FindProfit
-            // 
-            this.Query17_FindProfit.AutoSize = true;
-            this.Query17_FindProfit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Query17_FindProfit.Location = new System.Drawing.Point(20, 194);
-            this.Query17_FindProfit.Name = "Query17_FindProfit";
-            this.Query17_FindProfit.Size = new System.Drawing.Size(345, 23);
-            this.Query17_FindProfit.TabIndex = 15;
-            this.Query17_FindProfit.Text = "Find Profit";
-            this.Query17_FindProfit.UseVisualStyleBackColor = true;
-            this.Query17_FindProfit.Click += new System.EventHandler(this.Query17_FindProfit_Click);
+            this.MachID_Servicing_input.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MachID_Servicing_input.Location = new System.Drawing.Point(20, 296);
+            this.MachID_Servicing_input.Name = "MachID_Servicing_input";
+            this.MachID_Servicing_input.Size = new System.Drawing.Size(345, 20);
+            this.MachID_Servicing_input.TabIndex = 23;
             // 
             // Form1
             // 
@@ -1213,6 +1312,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.RepairControlGroup.ResumeLayout(false);
+            this.RepairControlGroup.PerformLayout();
+            this.PaymentControlGroup.ResumeLayout(false);
+            this.PaymentControlGroup.PerformLayout();
+            this.CustMachLookupControlGroup.ResumeLayout(false);
+            this.CustMachLookupControlGroup.PerformLayout();
             this.EmployeeControlGroup.ResumeLayout(false);
             this.EmployeeControlGroup.PerformLayout();
             this.emp_crud.ResumeLayout(false);
@@ -1234,12 +1339,6 @@
             this.CRUDFields.ResumeLayout(false);
             this.CRUDFields.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.CustMachLookupControlGroup.ResumeLayout(false);
-            this.CustMachLookupControlGroup.PerformLayout();
-            this.PaymentControlGroup.ResumeLayout(false);
-            this.PaymentControlGroup.PerformLayout();
-            this.RepairControlGroup.ResumeLayout(false);
-            this.RepairControlGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1330,6 +1429,15 @@
         private System.Windows.Forms.Button Query15_BuyMach;
         private System.Windows.Forms.Button Query16_TotPayPer;
         private System.Windows.Forms.Button Query17_FindProfit;
+        private System.Windows.Forms.Label BalanceLabel;
+        private System.Windows.Forms.TextBox CustIDInput;
+        private System.Windows.Forms.TextBox MachID_Input;
+        private System.Windows.Forms.Label TypeMachIDLabel;
+        private System.Windows.Forms.TextBox CustID_ForSelectMach;
+        private System.Windows.Forms.TextBox EmpID_ForDayOff;
+        private System.Windows.Forms.Label EmpDayOffLabel;
+        private System.Windows.Forms.TextBox MachID_Servicing_input;
+        private System.Windows.Forms.Label MachineToBeServiced_Label;
     }
 }
 
